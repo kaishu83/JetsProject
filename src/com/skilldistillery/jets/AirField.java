@@ -1,6 +1,7 @@
 package com.skilldistillery.jets;
 
 import java.io.BufferedReader;
+import java.io.EOFException;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -119,10 +120,9 @@ public class AirField {
 
 	public void fightAll() {
 		for (Jet jet : jets) {
-			if (jet instanceof FightJet) {
-				((FightJet) jet).Fight();
-			} else if (jet instanceof BomberJet) {
-				((BomberJet) jet).Fight();
+			if (jet instanceof Fight) {
+				((Fight) jet).Fight();
+
 			}
 		}
 
@@ -142,42 +142,50 @@ public class AirField {
 		System.out.println("3. Fight Jet");
 		System.out.println("4. Spy Jet");
 		System.out.println("5. Crew Jet");
-		System.out.println("6. Other type");
+		try {
+			String type = input.next();
 
-		String type = input.next();
-		System.out.println("What the model of your jet?");
-		String model = input.next();
-		System.out.println("What the speed of your jet");
-		double speed = input.nextDouble();
-		System.out.println("What the range of your jet");
-		int range = input.nextInt();
-		System.out.println("What's your price of jet");
-		long price = input.nextLong();
-		Jet newJet = null;
-		switch (type) {
-			case "1":
-				newJet = new CargoPlane(model, speed, range, price);
-				break;
-			case "2":
-				newJet = new BomberJet(model, speed, range, price);
-				break;
-			case "3":
-				newJet = new FightJet(model, speed, range, price);
-				break;
-			case "4":
-				newJet = new SpyJet(model, speed, range, price);
-				break;
-			case "5":
-				newJet = new CrewJet(model, speed, range, price);
-				break;
+			System.out.println("What the model of your jet?");
+			String model = input.next();
+			System.out.println("What the speed of your jet");
+			double speed = input.nextDouble();
+			System.out.println("What the range of your jet");
+			int range = input.nextInt();
+			System.out.println("What's your price of jet");
+			long price = input.nextLong();
+			Jet newJet = null;
+
+			switch (type) {
+				case "1":
+					newJet = new CargoPlane(model, speed, range, price);
+					break;
+				case "2":
+					newJet = new BomberJet(model, speed, range, price);
+					break;
+				case "3":
+					newJet = new FightJet(model, speed, range, price);
+					break;
+				case "4":
+					newJet = new SpyJet(model, speed, range, price);
+					break;
+				case "5":
+					newJet = new CrewJet(model, speed, range, price);
+					break;
+				default:
+			}
+
+			jets.add(newJet);
+			System.out.println("Your jet created!");
+		} catch (Exception e) {
+			System.out.println(e);
 		}
-		jets.add(newJet);
+
 	}
 
 	public void DeleteJet(Scanner input) {
 		PrintFleet();
-		System.out.println("Please enter the \"MODEL\" of the jet your want to remove");
 		boolean b = false;
+		System.out.println("Please enter the \"MODEL\" of the jet your want to remove");
 		String modelDel = input.next();
 		for (int i = 0; i < jets.size(); i++) {
 

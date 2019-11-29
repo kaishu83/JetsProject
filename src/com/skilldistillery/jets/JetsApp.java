@@ -15,44 +15,48 @@ public class JetsApp {
 		Scanner input = new Scanner(System.in);
 		AirField af = new AirField();
 		int option = 0;
-		do {
-			printMenu();
-			option = input.nextInt();
-			switch (option) {
-				case 1:
-					af.PrintFleet();
-					break;
-				case 2:
-					af.flyAll();
-					break;
-				case 3:
-					System.out.println(af.Fastest());
-					break;
-				case 4:
-					System.out.println(af.LongestRange());
-					break;
-				case 5:
-					af.loadAll();
-					break;
-				case 6:
-					af.fightAll();
-					break;
-				case 7:
-					af.AddJet(input);
-					break;
-				case 8:
-					af.DeleteJet(input);
-					break;
-				case 9:
-					option = 9;
-					break;
-				default:
-					System.out.println("Wrong option, try again");
-					printMenu();
+		try {
+			do {
+				printMenu();
+				option = input.nextInt();
+				switch (option) {
+					case 1:
+						af.PrintFleet();
+						break;
+					case 2:
+						af.flyAll();
+						break;
+					case 3:
+						System.out.println(af.Fastest());
+						break;
+					case 4:
+						System.out.println(af.LongestRange());
+						break;
+					case 5:
+						af.loadAll();
+						break;
+					case 6:
+						af.fightAll();
+						break;
+					case 7:
+						af.AddJet(input);
+						break;
+					case 8:
+						af.DeleteJet(input);
+						break;
+					case 9:
+						option = 9;
+						System.out.println("GoodBye!");
+						break;
+					default:
+						System.out.println("Wrong option, try again");
 
-			}
+				}
 
-		} while (option != 9);
+			} while (option != 9);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 		input.close();
 	}
 

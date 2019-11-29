@@ -1,6 +1,6 @@
 package com.skilldistillery.jets;
 
-public class BomberJet extends Jet implements CargoCarrier, Fight {
+public class BomberJet extends JetImpl implements CargoCarrier, Fight {
 	private boolean isLoaded = false;
 
 	public boolean isLoaded() {
