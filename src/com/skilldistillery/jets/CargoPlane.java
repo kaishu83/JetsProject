@@ -1,11 +1,25 @@
 package com.skilldistillery.jets;
 
-public class CargoPlane extends Jet {
+public class CargoPlane extends Jet implements CargoCarrier {
+	protected boolean isLoaded;
 
 	public CargoPlane(String model, double speed, int range, long price) {
 		super(model, speed, range, price);
-		// TODO Auto-generated constructor stub
+		isLoaded = false;
 	}
 
-	// question
+	@Override
+	public void loadCargo() {
+
+		System.out.println(this.getClass().getSimpleName() + " " + this.getModel() + " loaded and its speed and range"
+				+ "reduced by 20%!");
+		this.setSpeed(this.getSpeed() * 0.8);
+		this.setRange((int) (this.getRange() * 0.8));
+		isLoaded = true;
+	}
+
+	public boolean isLoaded() {
+		return isLoaded;
+	}
+
 }
