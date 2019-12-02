@@ -1,10 +1,10 @@
-###Week 3 Homework for Skill Distillery
+### Week 3 Homework for Skill Distillery
 
-##Overview
+## Overview
 
 A Jet program will read jet data from a .txt document, which includes different type of jets, and allows user to do different things on the menu.
 
-##Topics/Technologies USED
+## Topics/Technologies USED
 
 1. Java
 2. Creating base object class Jet and its constructor and fields, creating several sub-class of different type of jets that extends the base class Jet.
@@ -14,7 +14,7 @@ Some class will have interfaces for different jets such as fight and load.
 
 
 
-##Lesson Learned
+## Lesson Learned
 
 Have better understanding of polymorphism
 Understand the use of try catch.
